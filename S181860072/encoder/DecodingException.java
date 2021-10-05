@@ -1,4 +1,4 @@
-package example.encoder;
+package S181860072.encoder;
 
 public class DecodingException extends Exception {
 

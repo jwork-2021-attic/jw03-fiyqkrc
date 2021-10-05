@@ -1,11 +1,11 @@
-package example;
+package S181860072;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 
-import example.classloader.SteganographyClassLoader;
+import S181860072.classloader.SteganographyClassLoader;
 
 public class Scene {
 

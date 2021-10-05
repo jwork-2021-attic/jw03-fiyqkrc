@@ -1,4 +1,4 @@
-package example;
+package S181860072;
 
 public class QuickSorter implements Sorter {
     private String plan = "";
