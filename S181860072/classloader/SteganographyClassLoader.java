@@ -5,7 +5,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import example.encoder.SteganographyEncoder;
+import S181860072.encoder.SteganographyEncoder;
 
 import java.awt.image.BufferedImage;
 
