@@ -29,7 +29,7 @@ public class Scene {
         //SteganographyClassLoader loader = new SteganographyClassLoader(
         //    new URL("file:/./S181860072/QuickSorter.png"));
         SteganographyClassLoader loader = new SteganographyClassLoader(
-            new URL("file:/./S181860072/SelectSorter.png"));
+            new URL("https://github.com/jwork-2021/jw03-fiyqkrc/blob/main/S181860072.SelectSorter.png"));
         Class c = loader.loadClass("S181860072.SelectSorter");
 
         Sorter sorter = (Sorter) c.newInstance();
