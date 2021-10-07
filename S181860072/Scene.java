@@ -1,10 +1,10 @@
-package example;
+package S181860072;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.net.URL;
 
-import example.classloader.SteganographyClassLoader;
+import S181860072.classloader.SteganographyClassLoader;
 
 public class Scene {
 
@@ -21,16 +21,22 @@ public class Scene {
 
         Geezer theGeezer = Geezer.getTheGeezer();
 
+        //SteganographyClassLoader loader = new SteganographyClassLoader(
+        //        new URL("https://cdn.njuics.cn/example.BubbleSorter.png"));
+        //SteganographyClassLoader loader = new SteganographyClassLoader(
+        //        new URL("file:S181860072.BubbleSorter.png"));
+        //SteganographyClassLoader loader = new SteganographyClassLoader(
+        //        new URL("file:S181860072.QuickSorter.png"));
         SteganographyClassLoader loader = new SteganographyClassLoader(
-                new URL("file:example.InsertionSorter.png"));
+              new URL("file:S181860072.SelectSorter.png"));
+        Class<?> c = loader.loadClass("S181860072.SelectSorter");
 
-        Class c = loader.loadClass("example.InsertionSorter");
-
-        Sorter sorter = (Sorter) c.newInstance();
+        Sorter sorter = (Sorter) c.getDeclaredConstructor().newInstance();
 
         theGeezer.setSorter(sorter);
 
         String log = theGeezer.lineUp(line);
+
 
         BufferedWriter writer;
         writer = new BufferedWriter(new FileWriter("result.txt"));

@@ -1,11 +1,11 @@
-package example.classloader;
+package S181860072.classloader;
 
 import java.awt.image.BufferedImage;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import example.encoder.SteganographyEncoder;
+import S181860072.encoder.SteganographyEncoder;
 
 public class SteganographyClassLoader extends ClassLoader {
 
