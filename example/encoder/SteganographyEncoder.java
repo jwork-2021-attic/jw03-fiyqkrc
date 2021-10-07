@@ -146,7 +146,6 @@ public class SteganographyEncoder {
         int curColor = 2;
         int curPix = 0;
         int charOffset = 0;
-
         pixels[0] &= mask;
         for (byte aByte : bytes) {
             while (charOffset < 8) {
@@ -164,7 +163,6 @@ public class SteganographyEncoder {
             }
             charOffset %= 8;
         }
-
         BufferedImage bufferedImage = new BufferedImage(this.bi.getWidth(), this.bi.getHeight(),
                 BufferedImage.TYPE_INT_ARGB);
         bufferedImage.setRGB(0, 0, this.bi.getWidth(), this.bi.getHeight(), pixels, 0, this.bi.getWidth());
@@ -180,9 +178,28 @@ public class SteganographyEncoder {
         int curPix = 0;
         int charOffset = 0;
 
-        // TODO: Optimize this code to decode only needed number of bytes and not the
-        // whole byte array
-        for (int i = 0; i < maxNoOfBytes; i++) {
+        // decode the first 8 byte data to get filenamesize and filesize
+        for (int i = 0; i < 8; i++) {
+            byte oneByte = 0;
+            while (charOffset < 8) {
+                if (curColor < 0) {
+                    curColor = 2;
+                    curPix++;
+                }
+                char temp = (char) (pixels[curPix] >> (8 * curColor) & smallMask);
+                oneByte |= temp << 8 - bitsFromColor - charOffset;
+
+                charOffset += bitsFromColor;
+                curColor--;
+            }
+            result[i] = oneByte;
+            charOffset %= 8;
+        }
+        // from byteArray to int
+        int nameSize = byteArrayToInt(Arrays.copyOfRange(result, 0, 4));
+        int fileSize = byteArrayToInt(Arrays.copyOfRange(result, 4, 8));
+        // decode byte base on need
+        for (int i = 8; i < 8 + nameSize + fileSize; i++) {
             byte oneByte = 0;
             while (charOffset < 8) {
                 if (curColor < 0) {
